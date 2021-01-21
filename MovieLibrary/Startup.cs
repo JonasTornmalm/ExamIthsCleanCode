@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MovieLibrary.Infrastructure;
+using MovieLibrary.Services;
+using MovieLibrary.Services.Contracts;
 
 namespace MovieLibrary
 {
@@ -27,6 +30,11 @@ namespace MovieLibrary
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.Configure<EndPointOptions>(Configuration.GetSection("Endpoints"));
+            services.AddSingleton<IMovieService, MovieService>();
+            services.AddSingleton<IFetchDataService, FetchDataService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "MovieLibrary", Version = "v1"});
