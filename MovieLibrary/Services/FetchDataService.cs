@@ -54,12 +54,12 @@ namespace MovieLibrary.Services
             var httpResponse = client.GetAsync(url).Result;
             if (!httpResponse.IsSuccessStatusCode)
             {
-                throw new Exception("Something went wrong when fetching the movie data");
+                throw new Exception("Could not get data");
             }
             var content = httpResponse.Content.ReadAsStream().ToString();
             if (content is null)
             {
-                throw new Exception("No data in response from external API");
+                throw new Exception("Content is null");
             }
             return new StreamReader(httpResponse.Content.ReadAsStream()).ReadToEnd();
         }
