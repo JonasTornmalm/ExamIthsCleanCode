@@ -1,3 +1,9 @@
+Jag valde att testa sorteringen, använde mig av moq så jag kunde få in temp data. 
+
+Körde singleton på Imovieservice och IFetchDataservice, injected i dependency injection. Kändes mest logiskt då det endast behövs finnas en instans av det. 
+
+Strukturera upp koden mycket i mappar mm, för att bli mer lättläslig, mer detaljera metodnamn osv. 
+
 # Tentamen i Clean code och testbar kod
 
 - Datum: 2021-01-21
